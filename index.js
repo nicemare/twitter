@@ -1,14 +1,17 @@
-const puppeteer = require('puppeteer');
+const puppeteer1 = require('puppeteer')
+const puppeteer = require('puppeteer-extra')
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
+puppeteer.use(AdblockerPlugin())
 const fs = require('fs');
 // var randomize = require('randomatic');
 const randomName = require('random-name');
-const { devices } = puppeteer;
+const { devices } = puppeteer1;
 const iPhoneX = devices["iPhone X"];
 
 (async () => {
   const browser = await puppeteer.launch({
     headless:false,
-    args: ['--incognito','--no-default-browser-check','--disable-site-isolation-trials','--no-experiments','--ignore-gpu-blacklist','--ignore-certificate-errors','--ignore-certificate-errors-spki-list','--disable-gpu','--disable-extensions','--disable-default-apps','--enable-features=NetworkService','--disable-setuid-sandbox','--no-sandbox','--disable-webgl','--disable-threaded-animation','--disable-threaded-scrolling','--disable-in-process-stack-traces','--disable-histogram-customizer','--disable-gl-extensions','--disable-composited-antialiasing','--disable-canvas-aa','--disable-3d-apis','--disable-accelerated-2d-canvas','--disable-accelerated-jpeg-decoding','--disable-accelerated-mjpeg-decode','--disable-app-list-dismiss-on-blur','--disable-accelerated-video-decode']
+    args: ['defaultViewport: 1400,900','--window-size=400,825','--incognito','--no-default-browser-check','--disable-site-isolation-trials','--no-experiments','--ignore-gpu-blacklist','--ignore-certificate-errors','--ignore-certificate-errors-spki-list','--disable-gpu','--disable-extensions','--disable-default-apps','--enable-features=NetworkService','--disable-setuid-sandbox','--no-sandbox','--disable-webgl','--disable-threaded-animation','--disable-threaded-scrolling','--disable-in-process-stack-traces','--disable-histogram-customizer','--disable-gl-extensions','--disable-composited-antialiasing','--disable-canvas-aa','--disable-3d-apis','--disable-accelerated-2d-canvas','--disable-accelerated-jpeg-decoding','--disable-accelerated-mjpeg-decode','--disable-app-list-dismiss-on-blur','--disable-accelerated-video-decode']
 });
   const pageList = await browser.pages();   
   const context = await browser.createIncognitoBrowserContext();  
@@ -105,8 +108,7 @@ await page2.waitForSelector('#react-root > div > div > div.css-1dbjc4n.r-13qz1uu
 await page2.click('#react-root > div > div > div.css-1dbjc4n.r-13qz1uu.r-417010 > main > div > div > div > div.css-1dbjc4n.r-6koalj.r-16y2uox > div.css-1dbjc4n.r-ahm1il.r-136ojw6 > div > div > div > div.css-1dbjc4n.r-obd0qt.r-1pz39u2.r-1t2qqvi.r-16y2uox.r-1wbh5a2.r-1777fci.r-1ozfoo7.r-1vsu8ta.r-18qmn74 > div',{delay:5000})
 
 
-fs.appendFileSync("akun.txt", `${mail}\n${userName}\n${passWord}\n`);
+fs.appendFileSync("akun.txt", `=====\n email : ${mail}\n username : ${userName}\n password : ${passWord}\n=====`);
 console.log('Sukses ! Email dan password telah disimpan')
 await browser.close()
-goto loop
 })();
