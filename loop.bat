@@ -1,4 +1,4 @@
 @echo off
 :start
-node twit.js
+node fix.js
 goto start
