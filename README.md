@@ -6,10 +6,9 @@
 
 # Required :
  * Noje js Puppeter
- * AdblockerPlugin
  * Chromium
 # Update :
- * fix.js
- run : node fix.js
+ * v2.js
+ run : node v2.js
 # Proof
 - ![image](https://user-images.githubusercontent.com/25836391/111159148-5ff9e500-85cb-11eb-8d4e-29061877c3db.png)
